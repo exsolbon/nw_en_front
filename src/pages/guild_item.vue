@@ -2,7 +2,7 @@
   <q-page >
     <div class="container">
       <div class="flex items-center justify-between">
-         <h1 class="text-white text-h3">{{guild.name}}</h1>
+        <h1 class="text-white text-h3">{{guild.name}}</h1>
 
       </div>
 
@@ -10,10 +10,10 @@
       <div class="container">
         <div class="guild-wrapper">
           <div v-if="guild.image" class="text-center q-mb-lg">
-          <img style="max-width: 100%;height: auto;object-fit: contain;margin-bottom: 30px" :src="guild.image" alt="">
-            <a class="inline-block q-py-sm q-px-lg q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--rectangle bg-primary text-dark q-btn--actionable q-focusable q-hoverable q-btn--wrap q-btn--active" v-if="guild.discord_link" target="_blank" :href="guild.discord_link">Ссылка на Discord</a>
-        </div>
-         <div class="post-content" v-html="guild.description"></div>
+            <img style="max-width: 100%;height: auto;object-fit: contain;margin-bottom: 30px" :src="guild.image" alt="">
+            <a class="inline-block q-py-sm q-px-lg q-btn q-btn-item non-selectable no-outline q-btn--standard q-btn--rectangle bg-primary text-dark q-btn--actionable q-focusable q-hoverable q-btn--wrap q-btn--active" v-if="guild.discord_link" target="_blank" :href="guild.discord_link">Discord link</a>
+          </div>
+          <div class="post-content" v-html="guild.description"></div>
         </div>
 
 
@@ -32,10 +32,10 @@
             <q-item-section side top>
               <q-item-label caption>{{new Date(fb.created_at).toLocaleDateString() }}</q-item-label>
               <q-rating
-                v-model="fb.rating"
-                size="1em"
-                color="orange"
-                readonly
+                  v-model="fb.rating"
+                  size="1em"
+                  color="orange"
+                  readonly
               />
             </q-item-section>
           </q-item>
@@ -45,22 +45,22 @@
 
         </q-list>
         <q-btn v-if="$user.loggedIn && !addFeedback" @click="addFeedback = true" icon="add" no-caps color="primary" text-color="dark" label="Add Feedback"/>
-            <q-btn v-if="!$user.loggedIn" @click="changeauthModalVisible(true)" icon="add" no-caps color="primary" text-color="dark" label="Add Feedback"/>
+        <q-btn v-if="!$user.loggedIn" @click="changeauthModalVisible(true)" icon="add" no-caps color="primary" text-color="dark" label="Add Feedback"/>
 
         <div v-if="addFeedback" class="addFeedback q-mt-lg">
           <div class="flex q-mb-md"><p class="q-mb-none q-mr-md text-bold">Rating</p>
             <q-rating
-              v-model="feedbackData.rating"
-              size="18px"
-              color="primary"
+                v-model="feedbackData.rating"
+                size="18px"
+                color="primary"
             /></div>
           <p class="text-bold">Text</p>
           <q-input
-            v-model="feedbackData.text"
-            filled
-            dark
-            class="q-mb-md text-white"
-            type="textarea"
+              v-model="feedbackData.text"
+              filled
+              dark
+              class="q-mb-md text-white"
+              type="textarea"
           />
           <q-btn :loading="is_loading" :disable="!feedbackData.text.length>0 || !feedbackData.rating>0"
                  @click="createFeedback"
@@ -82,15 +82,17 @@ import {mapActions} from "vuex";
 export default {
   name: 'MainLayout',
 
-  meta () {
-    return {
-
-
-      title: this.title,
+  meta() {
+    return{
+      title: `New World Company & Guild list | ${this.title}`,
       meta: {
         description: {name: this.description},
-        keywords: {name: 'keywords', content: 'Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
-
+        ogTitle: {
+          name: 'og:title',
+          template(ogTitle) {
+            return `New World Company & Guild list | ${this.title}`
+          }
+        }
       }
     }
   },
@@ -104,8 +106,8 @@ export default {
         guild_id:null
       },
       addFeedback:false,
-      title: 'New World Fans | Компании',
-      description: 'Информация о компании в игре New World',
+      title: '',
+      description: '',
       guild:{},
       feedbacks:[]
 
@@ -114,8 +116,8 @@ export default {
   async mounted() {
     const response = await this.$api.get(`/api/guild/guild?slug=${this.$route.params.slug}`)
     this.guild = response.data
-    this.title = 'New World Fans | Компания ' + this.guild.name
-    this.description = 'Информация о компании в игре New World ' + this.guild.name
+    this.title = this.guild.name
+    this.description = this.guild.name
     this.feedbackData.guild_id = this.guild.id
     const response_fb = await this.$api.get(`/api/guild/feedback?slug=${this.$route.params.slug}`)
     this.feedbacks = response_fb.data

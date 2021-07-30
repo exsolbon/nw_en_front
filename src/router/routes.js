@@ -12,6 +12,8 @@ const routes = [
     component: () => import('layouts/mainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/index.vue') },
+      { path: 'about', component: () => import('pages/about.vue') },
+      { path: 'privacy', component: () => import('pages/privacy.vue') },
       { path: 'skills', component: () => import('pages/skills.vue') },
       { path: 'faq', component: () => import('pages/faq.vue') },
       { path: 'trade', component: () => import('pages/trade.vue') },

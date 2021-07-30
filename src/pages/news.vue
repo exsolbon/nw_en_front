@@ -4,7 +4,7 @@
 
           <div class="flex items-center q-py-lg">
             <q-icon size="30px" class="q-mr-md" color="primary" name="campaign" />
-            <h3 class="text-h5">New World news</h3>
+            <h1 class="text-h5">New World news</h1>
           </div>
 
           <NewsCard
@@ -27,21 +27,20 @@ export default {
   name: 'MainLayout',
   meta: {
     // sets document title
-    title: 'New World Fans | Новости игры',
+    title: 'New World news',
 
 
     // meta tags
     meta: {
-      description: {name: 'Информационный сайт посвященный игре New World.' +
-          ' Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
-      keywords: {name: 'keywords', content: 'Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
+      description: {name: 'New world game latest news'},
+
 
       // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
       ogTitle: {
         name: 'og:title',
         // optional; similar to titleTemplate, but allows templating with other meta properties
         template(ogTitle) {
-          return `New World Fans | Новости игры`
+          return `New World news`
         }
       }
     }

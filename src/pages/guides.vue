@@ -4,7 +4,7 @@
 
           <div class="flex items-center  q-py-lg">
             <q-icon size="30px" class="q-mr-md" color="primary" name="people_alt" />
-            <h1 class="text-h5">Гайды New World</h1>
+            <h1 class="text-h5">New World Guides</h1>
           </div>
     <div class="q-gutter-md">
       <q-btn color="primary" @click="$scrollTo(`#cat_${category.id}`, 200, {offset: -90})" text-color="dark" :label="category.name" v-for="category in categories" :key="category.id"/>
@@ -37,21 +37,19 @@ export default {
   components: {GuideCard},
   meta: {
     // sets document title
-    title: 'New World Fans | Гайды',
+    title: 'New World Guides',
 
 
     // meta tags
     meta: {
-      description: {name: 'Информационный сайт посвященный игре New World.' +
-          ' Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
-      keywords: {name: 'keywords', content: 'Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
+      description: {name: 'Guides & Tips for New World is a section to guide both experienced and new players on certain aspects of the game. '},
 
       // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
       ogTitle: {
         name: 'og:title',
         // optional; similar to titleTemplate, but allows templating with other meta properties
         template(ogTitle) {
-          return `New World Fans | Гайды`
+          return `New World Guides`
         }
       }
     }

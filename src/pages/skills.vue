@@ -3,7 +3,12 @@
 
   <q-page class="">
     <div class="container">
-      <p class="text-body2 text-center q-mb-none q-mt-md">To save the build, select both weapons and distribute all available points</p>
+       <div class="flex items-center">
+               <q-icon size="30px" class="q-mr-md" color="primary" name="app_registration" />
+            <h1 class="text-h5">New World Talents and Skills Calculator</h1>
+            </div>
+
+      <p class="text-body2 q-mb-none q-mt-md">Select a weapon and configure the stats skills, at your discretion. To save the build, select both weapons and distribute all available points</p>
 
       <Calculator weapon_title="First weapon" :weapon_num="1" @done="firstDone" @not_done="not_done" @changeFirstWeapon="changeFirstWeapon"/>
       <Calculator weapon_title="Second weapon" :weapon_num="2" @done="secondDone" @not_done="not_done" @changeSecondWeapon="changeSecondWeapon"/>
@@ -231,19 +236,18 @@ export default {
   components: {Calculator},
   meta: {
     // sets document title
-    title: 'New World Fans | Skills',
+    title: 'New World Skill Calculator ',
 
 
     // meta tags
     meta: {
-      description: {name: 'Калькулятор билдов и описание скилов игры New World'},
-      keywords: {name: 'keywords', content: 'Калькулятор билдов и описание скилов игры New World'},
+      description: {name: 'New World Calculator Create your own builds for the New World MMO'},
 
       ogTitle: {
         name: 'og:title',
         // optional; similar to titleTemplate, but allows templating with other meta properties
         template(ogTitle) {
-          return `New World Fans | Калькулятор умений`
+          return `New World Skill Calculator`
         }
       }
     }

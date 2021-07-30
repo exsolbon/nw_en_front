@@ -4,7 +4,7 @@
       <div class="flex items-center justify-between">
         <div class="flex items-center q-py-lg">
           <q-icon size="30px" class="q-mr-md" color="primary" name="app_registration" />
-          <h3 class="text-h5">Builds</h3>
+          <h1 class="text-h5">New World Builds</h1>
         </div>
         <q-btn to="/skills" icon="add" no-caps color="primary" text-color="dark" label="New build"/>
       </div>
@@ -88,21 +88,20 @@ export default {
   name: 'MainLayout',
   meta: {
     // sets document title
-    title: 'New World Fans | Builds',
+    title: 'New World Builds',
 
 
     // meta tags
     meta: {
-      description: {name: 'Информационный сайт посвященный игре New World.' +
-          ' Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
-      keywords: {name: 'keywords', content: 'Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
+      description: {name: 'Builds for New World covers an arrangement of character statistics such as skills, feats, specializations, and gear such as weapons and armor that defines a player\'s specific set of playstyle. '},
+
 
       // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
       ogTitle: {
         name: 'og:title',
         // optional; similar to titleTemplate, but allows templating with other meta properties
         template(ogTitle) {
-          return `New World Fans | Билды`
+          return `New World Builds`
         }
       }
     }
@@ -114,8 +113,8 @@ export default {
       autoplay:true,
       builds:[],
       fiter_builds:[],
-      build_purpose:'Любое назначение',
-      build_weapon:'Любое оружие',
+      build_purpose:'All',
+      build_weapon:'All',
       build_purposes: [
         'All', 'PvP', 'PvE', 'Siege', 'Expedition', 'Universal'
       ],

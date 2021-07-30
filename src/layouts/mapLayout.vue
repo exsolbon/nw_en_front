@@ -5,9 +5,9 @@
         <q-toolbar class="flex items-center">
           <q-toolbar-title >
             <router-link style="text-decoration: none;color: #fff" class="flex items-center no-wrap" to="/">
-              <p class="q-mb-none q-mr-xs">NW</p>
+
               <img class="logo  q-mr-xs" src="~assets/logo.png" alt="">
-              <p class="q-mb-none">FANS</p>
+
             </router-link>
           </q-toolbar-title>
 
@@ -15,6 +15,7 @@
 
             <q-route-tab name="news" label="News" to="/news"/>
             <q-route-tab name="guilds" label="Companies" to="/companies"/>
+             <q-route-tab name="builds" label="Builds" to="/builds"/>
             <q-btn-dropdown  auto-close stretch flat label="Info">
               <q-list class="bg-grey-9">
                 <q-item clickable>
@@ -29,11 +30,7 @@
                   </q-item-section>
                 </q-item>
                 <q-separator/>
-                <q-item clickable>
-                  <q-item-section>
-                    <router-link class="nav-link" to="/builds">Builds</router-link>
-                  </q-item-section>
-                </q-item>
+
               </q-list>
             </q-btn-dropdown>
             <q-route-tab name="calc" label="Skills (v0.5)" to="/skills"/>
@@ -139,20 +136,20 @@ export default {
   name: 'MainLayout',
    meta: {
     // sets document title
-    title: 'Интерактивная карта, карта объектов New World',
+    title: 'New World Interactive Map',
 
 
     // meta tags
     meta: {
-      description: {name: 'description', content: 'Интерактивная карта, карта объектов New World, точки интереса и ресурсы'},
-      keywords: {name: 'keywords', content: 'Интерактивная карта, карта объектов New World, точки интереса, точки интереса, сундуки'},
+      description: {name: 'description', content: 'New World Map | Resources, Crafts, Dungeons Locations '},
+
       equiv: {'http-equiv': 'Content-Type', content: 'text/html; charset=UTF-8'},
       // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
       ogTitle: {
         name: 'og:title',
         // optional; similar to titleTemplate, but allows templating with other meta properties
         template(ogTitle) {
-          return `Интерактивная карта New World`
+          return `New World Interactive Map`
         }
       }
     }

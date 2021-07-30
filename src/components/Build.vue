@@ -4,7 +4,7 @@
             <div  class="skill-tree" v-for="(tree,tree_index) in weapon.trees" :key="tree.id">
 
               <p class="text-center text-h5 q-mb-none">{{tree.name_en}} </p>
-              <p class="text-center text-caption ">{{tree.name}}</p>
+
 
 
 

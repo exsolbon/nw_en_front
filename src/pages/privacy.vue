@@ -3,25 +3,10 @@
   <div class="container">
     <div class="flex items-center q-py-lg">
             <q-icon size="30px" class="q-mr-md" color="primary" name="help" />
-            <h1 class="text-h5">New World FAQs</h1>
+            <h1 class="text-h5">Privacy policy</h1>
           </div>
-    <q-list dark padding  class="rounded-borders" style="max-width: 100%">
-      <q-expansion-item
-        group="somegroup"
-        v-for="faq in faqs"
-        :key="faq.id"
-        :label="faq.question"
-        class="text-h6 text-primary"
-      >
-        <q-card class="bg-grey-9">
-          <q-card-section class="text-white" v-html="faq.answer">
+    <div class="" v v-html="texts.policy_text"></div>
 
-          </q-card-section>
-        </q-card>
-      </q-expansion-item>
-
-
-    </q-list>
   </div>
 </q-page>
 </template>
@@ -34,7 +19,7 @@ export default {
   name: 'MainLayout',
   meta: {
     // sets document title
-    title: 'New World FAQs',
+    title: 'Privacy policy',
 
 
     // meta tags
@@ -55,13 +40,13 @@ export default {
 
   data () {
     return {
-      faqs:[]
+      texts:[]
 
     }
   },
   async mounted() {
-    const response = await this.$api.get('/api/faq')
-    this.faqs = response.data
+    const response = await this.$api.get('/api/texts')
+    this.texts = response.data
 
   },
   methods:{

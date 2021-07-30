@@ -188,23 +188,16 @@ import {mapActions} from "vuex";
 export default {
   name: 'MainLayout',
   components: {Build},
-  meta: {
-    // sets document title
-    title: `New World Fans | Билды`,
-
-
-    // meta tags
-    meta: {
-      description: {name: 'Информационный сайт посвященный игре New World.' +
-          ' Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
-      keywords: {name: 'keywords', content: 'Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
-
-      // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
-      ogTitle: {
-        name: 'og:title',
-        // optional; similar to titleTemplate, but allows templating with other meta properties
-        template(ogTitle) {
-          return `New World Fans | Билды`
+  meta() {
+    return{
+      title: `New World Builds  | ${this.title}`,
+      meta: {
+        description: {name: 'description',content:this.description},
+        ogTitle: {
+          name: 'og:title',
+          template(ogTitle) {
+            return `New World Builds| ${this.title}`
+          }
         }
       }
     }
@@ -215,6 +208,8 @@ export default {
       img_url:process.env.API,
       slide:'first',
       autoplay:true,
+      title: '',
+      description: '',
       build:{
         feedbacks:[],
         weapon1:{
@@ -237,6 +232,8 @@ export default {
   async mounted() {
      const response = await this.$api.get(`/api/skill/build?slug=${this.$route.params.slug}&for=build`)
     this.build = response.data
+    this.title = this.build.name
+    this.description = this.build.description
     this.feedbackData.build_id = this.build.id
     for(const [key, value] of Object.entries(this.build.checked_skills_left_w1)){
       let skill_id = parseInt(key.split('_')[2])

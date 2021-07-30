@@ -19,39 +19,38 @@
 
 export default {
   name: 'MainLayout',
-  meta: {
-    // sets document title
-    title: `New World Fans | Новости игры`,
 
-
-    // meta tags
-    meta: {
-      description: {name: 'Информационный сайт посвященный игре New World.' +
-          ' Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
-      keywords: {name: 'keywords', content: 'Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
-
-      // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
-      ogTitle: {
-        name: 'og:title',
-        // optional; similar to titleTemplate, but allows templating with other meta properties
-        template(ogTitle) {
-          return `New World Fans | Новости игры`
+  meta() {
+    return{
+      title: `New World News  | ${this.title}`,
+      meta: {
+        description: {name: 'description',content:this.description.substring(0,300)},
+        ogTitle: {
+          name: 'og:title',
+          template(ogTitle) {
+            return `New World News| ${this.title}`
+          }
         }
       }
     }
   },
 
+
   data () {
+
     return {
       slide:'first',
       autoplay:true,
-      post:{}
-
+      post:{},
+      title: '',
+      description: '',
     }
   },
-  async mounted() {
+  async beforeMount() {
     const response_post = await this.$api.get(`/api/post/post?slug=${this.$route.params.slug}`)
     this.post = response_post.data
+    this.title = this.post.name
+    this.description = this.post.description
 
   },
   methods:{

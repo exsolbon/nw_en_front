@@ -6,11 +6,11 @@
           <div class="flex items-center justify-between q-py-lg">
             <div class="flex items-center">
                <q-icon size="30px" class="q-mr-md" color="primary" name="people_alt" />
-            <h3 class="text-h5">Companies</h3>
+            <h1 class="text-h5">New World Companies [Guilds] List</h1>
             </div>
 
-               <q-btn v-if="!$user.loggedIn" @click="changeauthModalVisible(true)" icon="add" no-caps color="primary" text-color="dark" label="Добавить компанию"/>
-            <q-btn v-else @click="changeguildCreateModalVisible(true)" icon="add" no-caps color="primary" text-color="dark" label="Добавить компанию"/>
+               <q-btn v-if="!$user.loggedIn" @click="changeauthModalVisible(true)" icon="add" no-caps color="primary" text-color="dark" label="Add company"/>
+            <q-btn v-else @click="changeguildCreateModalVisible(true)" icon="add" no-caps color="primary" text-color="dark" label="Add company"/>
 
           </div>
       <div class="companies-grid">
@@ -38,21 +38,20 @@ export default {
   components: {CompanyCard, NewsCard},
   meta: {
     // sets document title
-    title: 'New World Fans | Компании',
+    title: 'New World Company & Guild list',
 
 
     // meta tags
     meta: {
-      description: {name: 'Информационный сайт посвященный игре New World.' +
-          ' Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
-      keywords: {name: 'keywords', content: 'Калькулятор билдов, описание скилов, интерактивная карта, биржа игровой валюты'},
+      description: {name: 'Here you can find a list of the New World Companies [Guilds] created by players. If you are a clan leader you can also add your guild. If you are a player, use our real-time filters to find the company you want to join.'},
+
 
       // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
       ogTitle: {
         name: 'og:title',
         // optional; similar to titleTemplate, but allows templating with other meta properties
         template(ogTitle) {
-          return `New World Fans | Компании`
+          return `New World Company & Guild list`
         }
       }
     }

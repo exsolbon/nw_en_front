@@ -6,16 +6,17 @@
         <q-toolbar class="flex items-center">
           <q-toolbar-title >
             <router-link style="text-decoration: none;color: #fff" class="flex items-center no-wrap" to="/">
-              <p class="q-mb-none q-mr-xs">NW</p>
-              <img class="logo  q-mr-xs" src="~assets/logo.png" alt="">
-              <p class="q-mb-none">FANS</p>
+
+              <img  class="logo  q-mr-xs" src="~assets/logo.png" alt="">
+
             </router-link>
           </q-toolbar-title>
 
-          <q-tabs :breakpoint="1000" dense v-model="tab" indicator-color="primary" class="gt-sm">
+          <q-tabs  dense v-model="tab" indicator-color="primary" class="gt-sm">
 
             <q-route-tab name="news" label="News" to="/news"/>
             <q-route-tab name="guilds" label="Companies" to="/companies"/>
+            <q-route-tab name="builds" label="Builds" to="/builds"/>
             <q-btn-dropdown  auto-close stretch flat label="Info">
               <q-list class="bg-grey-9">
                 <q-item clickable>
@@ -30,11 +31,7 @@
                   </q-item-section>
                 </q-item>
                 <q-separator/>
-                <q-item clickable>
-                  <q-item-section>
-                    <router-link class="nav-link" to="/builds">Builds</router-link>
-                  </q-item-section>
-                </q-item>
+
               </q-list>
             </q-btn-dropdown>
             <q-route-tab name="calc" label="Skills (v0.5)" to="/skills"/>
@@ -138,14 +135,17 @@
         <div class="flex items-center justify-between">
           <div class="flex items-center">
             <router-link style="text-decoration: none;color: #fff" class="flex items-center no-wrap q-mr-md" to="/">
-              <p class="q-mb-none q-mr-xs">NW</p>
-              <img class="logo  q-mr-xs" src="~assets/logo.png" alt="">
-              <p class="q-mb-none">FANS</p>
+
+              <img class="q-mr-xs" src="~assets/logo.png" alt="">
+
             </router-link>
-            <p class="q-mb-none">New World fan site</p>
+            <p class="q-mb-none">New World is a trademark of Amazon Game Studios.<br> We are not affiliated with or endorsed by Amazon Game Studios</p>
           </div>
 
-          <p class="q-mb-none">info</p>
+          <p class="q-mb-none">
+            <router-link to="/about">About</router-link> |
+            <router-link to="/privacy">Privacy policy</router-link>
+          </p>
         </div>
       </div>
     </footer>
@@ -205,7 +205,7 @@
               :dense="!$q.screen.gt.md"
               v-model="userData.password2"
               :type="isPwd ? 'password' : 'text'"
-              label="Повторите пароль"
+              label="Repeat password"
               lazy-rules
               :rules="[ val => val && val===this.userData.password1 || 'Passwords not match']">
               <template v-slot:append>
@@ -381,7 +381,7 @@
 
             <div>
               <div class="text-center flex items-center justify-between">
-                <q-btn label="Добавить" :loading="is_loading" text-color="dark" no-caps type="submit" class="q-px-xl q-mb-md" color="primary "/>
+                <q-btn label="Add company" :loading="is_loading" text-color="dark" no-caps type="submit" class="q-px-xl q-mb-md" color="primary "/>
                 <p class="no-margin text-center text-bold">To edit the information in the future, please contact the discord <span class="text-negative">greshnik#9579</span></p>
               </div>
 
@@ -396,23 +396,23 @@
       <q-card  style="width: 700px; max-width: 80vw;">
 
         <q-card-section >
-          <p class="text-dark text-center text-h6 text-bold q-mb-none">Обратная связь</p>
-          <p class="text-caption text-center">Все ваши предложения по улучшению работы сайта и замечания будут рассмотрены</p>
+          <p class="text-dark text-center text-h6 text-bold q-mb-none">Feedback</p>
+          <p class="text-caption text-center">All your suggestions for improving the site and comments will be considered</p>
           <q-input
             filled
             :dense="!$q.screen.gt.md"
             class="q-mb-md"
             v-model="fb_user"
-            label="Ваш e-mail, discord (username#0000) или любой способ связи *"/>
+            label="E-mail, discord (username#0000) or any way of communication *"/>
           <q-input
             v-model="fb_text"
             filled
             class="q-mb-md"
-            label="Сообщение *"
+            label="Message *"
             type="textarea"
           />
           <div class="text-center ">
-            <q-btn @click="add_fb" :loading="is_loading" color="primary" :disable="!fb_text || !fb_user" text-color="dark" label="Отправить"/>
+            <q-btn @click="add_fb" :loading="is_loading" color="primary" :disable="!fb_text || !fb_user" text-color="dark" label="Send"/>
           </div>
 
         </q-card-section>
@@ -592,7 +592,7 @@ export default {
 </script>
 <style lang="sass">
 .logo
-  width: 30px
+  width: 130px
   height: 30px
   object-fit: contain
 .nav-link
