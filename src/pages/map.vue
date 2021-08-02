@@ -15,7 +15,7 @@
       <q-list  dark >
         <q-item >
           <q-item-section>
-            <p class="q-mb-none text-red text-bold text-center">The information will be supplemented and amended</p>
+            <h1 class="q-mb-none text-h6 text-bold text-center">New world map</h1>
           </q-item-section>
         </q-item>
          <q-item clickable v-ripple >
@@ -161,6 +161,19 @@ if (!process.env.SERVER) {
   Vue2Leaflet = require('vue2-leaflet')
 }
 export default {
+  meta: {
+    title: 'New world interactive map',
+    // meta tags
+    meta: {
+      description: {name: 'description', content: 'New world interactive map'},
+      ogTitle: {
+        name: 'og:title',
+        template(ogTitle) {
+          return `New world interactive map`
+        }
+      }
+    }
+  },
   components: {
     'l-tile-layer':Vue2Leaflet.LTileLayer,
     'l-marker':Vue2Leaflet.LMarker,

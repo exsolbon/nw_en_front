@@ -130,9 +130,9 @@ export default {
 
     // meta tags
     meta: {
-      description: {name: 'Information site dedicated to the game New World.' +
+      description: {name: 'description', content: 'Information site dedicated to the game New World.' +
           'Builds calculator, description of skills, interactive map, game currency exchange'},
-      keywords: {name: 'keywords', content: 'Builds calculator, description of skills, interactive map, game currency exchange'},
+
 
       // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
       ogTitle: {

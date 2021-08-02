@@ -16,15 +16,20 @@
 <script>
 
 
-
+import {mapGetters} from "vuex";
 export default {
-  name: 'MainLayout',
+  async preFetch ({ store, currentRoute, redirect, ssrContext}) {
+    await store.dispatch('data/fetchPost',currentRoute.params.slug)
+    if (!store.state.data.post.name){
+      redirect({ path: '/404' })
+    }
+  },
 
   meta() {
     return{
       title: `New World News  | ${this.title}`,
       meta: {
-        description: {name: 'description',content:this.description.substring(0,300)},
+        description: {name: 'description',content:this.description},
         ogTitle: {
           name: 'og:title',
           template(ogTitle) {
@@ -39,23 +44,13 @@ export default {
   data () {
 
     return {
-      slide:'first',
-      autoplay:true,
-      post:{},
-      title: '',
-      description: '',
+      title: this.$store.state.data.post.name,
+      description: this.$store.state.data.post.description.substring(0,220).replace(/<[^>]*>?/gm, ''),
     }
   },
-  async beforeMount() {
-    const response_post = await this.$api.get(`/api/post/post?slug=${this.$route.params.slug}`)
-    this.post = response_post.data
-    this.title = this.post.name
-    this.description = this.post.description
-
-  },
-  methods:{
-
-  },
+   computed: {
+    ...mapGetters('data',['post']),
+  }
 
 }
 </script>

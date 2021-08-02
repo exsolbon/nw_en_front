@@ -6,7 +6,7 @@
       </div>
 
       <div class="text-h2" style="opacity:.4">
-        Тут ничего нет
+        Page not found
       </div>
 
       <q-btn
@@ -15,7 +15,7 @@
         text-color="dark"
 
         to="/"
-        label="На главную"
+        label="Home"
         no-caps
       />
     </div>

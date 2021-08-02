@@ -89,12 +89,9 @@ export default {
   meta: {
     // sets document title
     title: 'New World Builds',
-
-
     // meta tags
     meta: {
-      description: {name: 'Builds for New World covers an arrangement of character statistics such as skills, feats, specializations, and gear such as weapons and armor that defines a player\'s specific set of playstyle. '},
-
+      description: {name: 'description', content: 'Builds for New World covers an arrangement of character statistics such as skills, feats, specializations, and gear such as weapons and armor that defines a player\'s specific set of playstyle. '},
 
       // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
       ogTitle: {

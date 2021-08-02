@@ -20,10 +20,15 @@
 
 <script>
 
-
+import {mapGetters} from "vuex";
 import NewsCard from "components/NewsCard";
 export default {
   components: {NewsCard},
+  async preFetch ({store}) {
+    if (store.state.data.posts.length === 0){
+       await store.dispatch('data/fetchPosts')
+    }
+  },
   name: 'MainLayout',
   meta: {
     // sets document title
@@ -32,7 +37,7 @@ export default {
 
     // meta tags
     meta: {
-      description: {name: 'New world game latest news'},
+      description: {name: 'description', content: 'New world game latest news'},
 
 
       // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
@@ -50,18 +55,13 @@ export default {
     return {
       slide:'first',
       autoplay:true,
-      posts:[]
+
 
     }
   },
-  async mounted() {
-    const response_posts = await this.$api.get('/api/post/posts?for=all')
-    this.posts = response_posts.data
-
-  },
-  methods:{
-
-  },
+  computed: {
+    ...mapGetters('data', ['posts']),
+  }
 
 }
 </script>

@@ -78,9 +78,14 @@
 
 
 import { date } from 'quasar'
-import {mapActions} from "vuex";
+import {mapActions,mapGetters} from "vuex";
 export default {
-  name: 'MainLayout',
+  async preFetch ({ store, currentRoute, redirect, ssrContext}) {
+    await store.dispatch('data/fetchGuild',currentRoute.params.slug)
+    if (!store.state.data.guild.name){
+      redirect({ path: '/404' })
+    }
+  },
 
   meta() {
     return{
@@ -106,24 +111,20 @@ export default {
         guild_id:null
       },
       addFeedback:false,
-      title: '',
-      description: '',
-      guild:{},
+      title: this.$store.state.data.guild.name,
+      description: this.$store.state.data.guild.description.substring(0,220).replace(/<[^>]*>?/gm, ''),
       feedbacks:[]
 
     }
   },
   async mounted() {
-    const response = await this.$api.get(`/api/guild/guild?slug=${this.$route.params.slug}`)
-    this.guild = response.data
-    this.title = this.guild.name
-    this.description = this.guild.name
     this.feedbackData.guild_id = this.guild.id
     const response_fb = await this.$api.get(`/api/guild/feedback?slug=${this.$route.params.slug}`)
     this.feedbacks = response_fb.data
 
   },
   computed: {
+    ...mapGetters('data',['guild']),
     is_authModal_visible: {
       get() {
         return this.$store.state.componentState.is_authModal_visible

@@ -79,7 +79,7 @@ const actions = {
      this._vm.$cook.set('auth_token',response.data.auth_token)
        api.defaults.headers.common['Authorization'] = 'Token ' + response.data.auth_token
       Notify.create({
-        message:'Успешная авторизация',
+        message:'Login success',
         color:'positive',
         position: Screen.lt.sm ? 'bottom' : 'bottom-right',
       })
@@ -87,7 +87,7 @@ const actions = {
     }catch (e){
       console.log(e)
       Notify.create({
-        message:'Проверьте введеные данные',
+        message:'Login error. Check email or password',
         color:'red',
         position: Screen.lt.sm ? 'bottom' : 'bottom-right',
       })

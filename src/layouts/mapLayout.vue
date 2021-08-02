@@ -180,7 +180,7 @@ export default {
 </script>
 <style lang="sass">
 .logo
-  width: 30px
+  width: 130px
   height: 30px
   object-fit: contain
 .nav-link

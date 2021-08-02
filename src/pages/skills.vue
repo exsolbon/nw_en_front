@@ -237,11 +237,9 @@ export default {
   meta: {
     // sets document title
     title: 'New World Skill Calculator ',
-
-
     // meta tags
     meta: {
-      description: {name: 'New World Calculator Create your own builds for the New World MMO'},
+      description: {name: 'description', content: 'New World Calculator Create your own builds for the New World MMO'},
 
       ogTitle: {
         name: 'og:title',

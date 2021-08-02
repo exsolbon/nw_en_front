@@ -34,19 +34,19 @@ import NewsCard from "components/NewsCard";
 import CompanyCard from "components/CompanyCard";
 import { mapActions, mapGetters } from 'vuex'
 export default {
-  name: 'MainLayout',
+  async preFetch ({store, ssrContext}) {
+    if (store.state.data.guilds.length === 0){
+       await store.dispatch('data/fetchGuilds')
+    }
+  },
   components: {CompanyCard, NewsCard},
   meta: {
     // sets document title
     title: 'New World Company & Guild list',
-
-
     // meta tags
     meta: {
-      description: {name: 'Here you can find a list of the New World Companies [Guilds] created by players. If you are a clan leader you can also add your guild. If you are a player, use our real-time filters to find the company you want to join.'},
+      description: {name: 'description', content: 'Here you can find a list of the New World Companies [Guilds] created by players. If you are a clan leader you can also add your guild. If you are a player, use our real-time filters to find the company you want to join.'},
 
-
-      // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
       ogTitle: {
         name: 'og:title',
         // optional; similar to titleTemplate, but allows templating with other meta properties
@@ -59,21 +59,15 @@ export default {
 
   data () {
     return {
-      guilds:[],
 
     }
   },
-  async mounted() {
 
-    const response_guilds = await this.$api.get('/api/guild/guilds?for=all')
-    this.guilds = response_guilds.data
-
-
-  },
   methods:{
     ...mapActions('componentState',['changeauthModalVisible','changeguildCreateModalVisible']),
   },
   computed:{
+    ...mapGetters('data',['guilds']),
     is_authModal_visible:{
       get(){
         return this.$store.state.componentState.is_authModal_visible

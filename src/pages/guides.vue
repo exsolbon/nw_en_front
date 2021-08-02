@@ -7,9 +7,9 @@
             <h1 class="text-h5">New World Guides</h1>
           </div>
     <div class="q-gutter-md">
-      <q-btn color="primary" @click="$scrollTo(`#cat_${category.id}`, 200, {offset: -90})" text-color="dark" :label="category.name" v-for="category in categories" :key="category.id"/>
+      <q-btn color="primary" @click="$scrollTo(`#cat_${category.id}`, 200, {offset: -90})" text-color="dark" :label="category.name" v-for="category in guides" :key="category.id"/>
     </div>
-    <div :id="`cat_${category.id}`" class="" v-for="category in categories" :key="category.id">
+    <div :id="`cat_${category.id}`" class="" v-for="category in guides" :key="category.id">
       <h3 class="text-h5 text-primary text-bold">{{category.name}}</h3>
       <q-separator spaced="lg"/>
        <div class="companies-grid">
@@ -30,19 +30,22 @@
 <script>
 
 
-
+import {mapGetters} from "vuex";
 import GuideCard from "components/GuideCard";
 export default {
-  name: 'MainLayout',
   components: {GuideCard},
+  async preFetch ({store}) {
+    console.log('gides ', store.state.data.guides.length)
+    if (store.state.data.guides.length === 0){
+       await store.dispatch('data/fetchGuides')
+    }
+  },
   meta: {
     // sets document title
     title: 'New World Guides',
-
-
     // meta tags
     meta: {
-      description: {name: 'Guides & Tips for New World is a section to guide both experienced and new players on certain aspects of the game. '},
+      description: {name: 'description', content: 'Guides & Tips for New World is a section to guide both experienced and new players on certain aspects of the game. '},
 
       // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
       ogTitle: {
@@ -57,18 +60,13 @@ export default {
 
   data () {
     return {
-      categories:[]
+
 
     }
   },
-  async mounted() {
-    const response = await this.$api.get('/api/guide/guides')
-    this.categories = response.data
-
-  },
-  methods:{
-
-  },
+  computed:{
+    ...mapGetters('data',['guides']),
+   }
 
 }
 </script>

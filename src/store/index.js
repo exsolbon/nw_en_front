@@ -5,7 +5,7 @@ import Vuex from 'vuex'
 import componentState from './component-state-store'
 import auth from './auth'
 import weapons from './weapons'
-
+import data from './data'
 Vue.use(Vuex)
 
 /*
@@ -22,7 +22,8 @@ export default function (/* { ssrContext } */) {
     modules: {
       componentState,
       auth,
-      weapons
+      weapons,
+      data
     },
 
     // enable strict mode (adds overhead!)

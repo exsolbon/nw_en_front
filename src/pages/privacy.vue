@@ -18,21 +18,14 @@
 export default {
   name: 'MainLayout',
   meta: {
-    // sets document title
     title: 'Privacy policy',
-
-
     // meta tags
     meta: {
-      description: {name: 'FAQs or Frequently Asked Questions in New World covers different questions with its corresponding answer regarding New World. This page covers a list of the frequently asked questions regarding the game.'},
-
-
-      // note: for Open Graph type metadata you will need to use SSR, to ensure page is rendered by the server
+      description: {name: 'description', content: 'Privacy policy'},
       ogTitle: {
         name: 'og:title',
-        // optional; similar to titleTemplate, but allows templating with other meta properties
         template(ogTitle) {
-          return `New World FAQs`
+          return `Privacy policy`
         }
       }
     }

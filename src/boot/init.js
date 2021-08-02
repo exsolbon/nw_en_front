@@ -3,7 +3,7 @@ import {Cookies, LocalStorage} from 'quasar'
 // const token = LocalStorage.getItem('auth_token')
 
 export default async ({ app, router, Vue, store, ssrContext }) => {
-  console.info('boot: init entered', store)
+  //console.info('boot: init entered', store)
   const cookies = process.env.SERVER
     ? Cookies.parseSSR(ssrContext)
     : Cookies
