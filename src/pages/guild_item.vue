@@ -94,9 +94,7 @@ export default {
         description: {name: this.description},
         ogTitle: {
           name: 'og:title',
-          template(ogTitle) {
-            return `New World Company & Guild list | ${this.title}`
-          }
+          content: `New World Company & Guild list | ${this.title}`
         }
       }
     }

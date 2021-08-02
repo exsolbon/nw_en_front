@@ -125,7 +125,7 @@ export default {
   components: {BuildCard, CompanyCard, NewsCard},
   meta: {
     // sets document title
-    title: 'New World Fans | Home',
+    title: 'New World Data | Database, Talents and Skills Calculator, Builds, Guides',
 
 
     // meta tags

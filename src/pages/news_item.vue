@@ -32,9 +32,7 @@ export default {
         description: {name: 'description',content:this.description},
         ogTitle: {
           name: 'og:title',
-          template(ogTitle) {
-            return `New World News| ${this.title}`
-          }
+          content:`New World News| ${this.title}`
         }
       }
     }
