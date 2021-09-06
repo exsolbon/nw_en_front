@@ -18,4 +18,5 @@ export default async ({ app, router, Vue, store, ssrContext }) => {
   }
   Vue.prototype.$user = store.state.auth
   console.info('boot: init exited')
+  store.dispatch('data/fetchItemCategories')
 }

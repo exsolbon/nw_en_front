@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf"  class="bg-dark text-grey-2">
 
     <q-header elevated  class="bg-dark q-py-md ">
-      <div class="container">
+
         <q-toolbar class="flex items-center">
           <q-toolbar-title >
             <router-link style="text-decoration: none;color: #fff" class="flex items-center no-wrap" to="/">
@@ -17,27 +17,11 @@
             <q-route-tab name="news" label="News" to="/news"/>
             <q-route-tab name="guilds" label="Companies" to="/companies"/>
             <q-route-tab name="builds" label="Builds" to="/builds"/>
-            <q-btn-dropdown  auto-close stretch flat label="Info">
-              <q-list class="bg-grey-9">
-                <q-item clickable>
-                  <q-item-section >
-                    <router-link  class="nav-link" to="/guides">Guides</router-link>
-                  </q-item-section>
-                </q-item>
-                <q-separator/>
-                <q-item clickable>
-                  <q-item-section>
-                    <router-link class="nav-link" to="/faq">FAQ</router-link>
-                  </q-item-section>
-                </q-item>
-                <q-separator/>
+            <q-route-tab name="calc" label="Skills" to="/skills"/>
+            <q-route-tab name="guides" label="Guides" to="/guides"/>
+             <q-route-tab name="db" label="Database" to="/database/all"/>
+            <q-route-tab name="faq" label="FAQ" to="/faq"/>
 
-              </q-list>
-            </q-btn-dropdown>
-            <q-route-tab name="calc" label="Skills (v0.5)" to="/skills"/>
-
-            <q-route-tab name="map" label="Map" to="/map"/>
-<!--            <q-route-tab name="trade" label="Биржа" to="/trade"/>-->
           <q-btn @click="feedbackModal = !feedbackModal" color="dark" text-color="primary" label="Feedback"/>
 
           </q-tabs>
@@ -52,7 +36,6 @@
             @click="leftDrawerOpen = !leftDrawerOpen"
           />
         </q-toolbar>
-      </div>
 
     </q-header>
     <q-drawer
@@ -100,6 +83,11 @@
         <q-item clickable v-ripple >
           <q-item-section @click="$router.push('/skills')">
             Skills
+          </q-item-section>
+        </q-item>
+        <q-item clickable v-ripple >
+          <q-item-section @click="$router.push('/database/all')">
+            Database
           </q-item-section>
         </q-item>
         <q-item clickable v-ripple >

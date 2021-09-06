@@ -27,7 +27,7 @@
           </div>
 
           <div class="">
-            <p class="q-mb-none text-h6 text-bold">{{characteristic.name_en}} ({{characteristic.name}}) <q-btn icon="help_outline" round flat color="primary">
+            <p class="q-mb-none text-h6 text-bold">{{characteristic.name_en}}  <q-btn icon="help_outline" round flat color="primary">
         <q-tooltip>
 
           <span class="text-caption" v-html="characteristic.description"></span>

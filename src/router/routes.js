@@ -36,6 +36,16 @@ const routes = [
 
     ]
   },
+    {
+    path: '/database',
+    component: () => import('layouts/dbLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/database/index.vue') },
+      { path: ':category_slug', component: () => import('pages/database/index.vue') },
+      { path: ':category_slug/:subcategory_slug', component: () => import('pages/database/index.vue') },
+      { path: ':category_slug/:subcategory_slug/:item_slug', component: () => import('pages/database/item.vue') }
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it
