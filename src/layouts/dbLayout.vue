@@ -269,7 +269,7 @@ export default {
     width: 30px
     height: 30px
 .logo
-  width: 30px
+  width: 130px
   height: 30px
   object-fit: contain
 .nav-link
