@@ -2,7 +2,7 @@
 const routes = [
   {
     path: '/map',
-    component: () => import('layouts/mapLayout.vue'),
+    component: () => import('layouts/mainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/map.vue') }
     ]
@@ -38,7 +38,7 @@ const routes = [
   },
     {
     path: '/database',
-    component: () => import('layouts/dbLayout.vue'),
+    component: () => import('layouts/mainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/database/index.vue') },
       { path: ':category_slug', component: () => import('pages/database/index.vue') },

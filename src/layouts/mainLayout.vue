@@ -112,12 +112,58 @@
       </q-list>
 
     </q-drawer>
-    <q-page-container>
+
+    <q-page-container v-if="$route.path.split('/')[1] !== 'database'">
+
       <router-view />
       <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
             <q-btn fab size="md" icon="keyboard_arrow_up" color="primary" />
           </q-page-scroller>
     </q-page-container>
+     <div v-else class="container">
+        <div class="flex items-center q-py-lg">
+          <q-icon size="30px" class="q-mr-md" color="primary" name="help" />
+          <h1 class="text-h5">New World Items Database</h1>
+        </div>
+        <div class="database-wrapper">
+          <div class="side-menu">
+            <q-card dark>
+              <q-list dark  >
+                <q-item exact to="/database/all" clickable v-ripple>
+                  <q-item-section class="text-bold text-body1">All items</q-item-section>
+                </q-item>
+                <q-expansion-item
+                  dark
+                  group="group"
+                  :header-class="$route.params.category_slug===category.name_slug ?
+                   'bg-grey-9 text-body1 text-bold text-primary' :
+                    'bg-grey-9 text-white text-body1 text-bold' "
+                  :label="category.name"
+                  :default-opened="$route.params.category_slug===category.name_slug"
+                  v-for="(category,index) in item_categories"
+                  :expand-icon-class="$route.params.category_slug===category.name_slug ?
+                   'text-primary' :
+                   'text-white'"
+                  :key="index">
+                  <q-item clickable v-ripple
+                          :to="`/database/${category.name_slug}/${subcat.name_slug}`"
+                          v-for="subcat in category.subcategories"
+                          :key="subcat.id">
+                    <q-item-section>
+                      <q-item-label class="text-bold">{{subcat.name}}</q-item-label>
+
+                    </q-item-section>
+                    <q-item-section avatar>
+                      <q-icon :color="$route.params.subcategory_slug === subcat.name_slug ? 'primary' : 'white'" name="arrow_right" />
+                    </q-item-section>
+                  </q-item>
+                </q-expansion-item>
+              </q-list>
+            </q-card>
+          </div>
+          <router-view  />
+        </div>
+      </div>
     <footer class="q-pb-lg">
       <q-separator spaced="lg"/>
       <div class="container ">
@@ -558,7 +604,9 @@ export default {
 
     },
   },
+
   computed:{
+     ...mapGetters('data',['item_categories']),
     is_authModal_visible:{
       get(){
         return this.$store.state.componentState.is_authModal_visible
@@ -590,4 +638,32 @@ export default {
   text-transform: uppercase
 .form-control
   flex-basis: 49%
+.icon
+  display: inline-flex
+  border: 2px solid $primary
+  align-items: center
+  justify-content: center
+  padding: 5px
+  border-radius: 5px
+  img
+    width: 30px
+    height: 30px
+.logo
+  width: 130px
+  height: 30px
+  object-fit: contain
+.nav-link
+  text-decoration: none
+  color: #ffffff
+  text-transform: uppercase
+.form-control
+  flex-basis: 49%
+
+.database-wrapper
+  display: grid
+  grid-template-columns: 1fr 3fr
+  grid-gap: 30px
+@media (max-width: 768px)
+  .database-wrapper
+    grid-template-columns: 1fr
 </style>
