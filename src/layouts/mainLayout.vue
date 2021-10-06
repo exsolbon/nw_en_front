@@ -19,6 +19,7 @@
             <q-route-tab name="builds" label="Builds" to="/builds"/>
             <q-route-tab name="calc" label="Skills" to="/skills"/>
             <q-route-tab name="guides" label="Guides" to="/guides"/>
+            <q-route-tab name="map" label="Map" to="/map"/>
              <q-route-tab name="db" label="Database" to="/database/all"/>
             <q-route-tab name="faq" label="FAQ" to="/faq"/>
 

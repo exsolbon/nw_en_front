@@ -6,7 +6,7 @@
           <q-icon size="30px" class="q-mr-md" color="primary" name="app_registration" />
          <h1 class="text-h5">New World Builds</h1>
         </div>
-        <q-btn to="/skills" :class="$q.screen.lt.sm ? 'full-width q-mb-md' : ''" icon="add" no-caps color="primary" text-color="dark" label="Создать билд"/>
+        <q-btn to="/skills" :class="$q.screen.lt.sm ? 'full-width q-mb-md' : ''" icon="add" no-caps color="primary" text-color="dark" label="Create build"/>
       </div>
 
       <q-card dark class="q-mb-lg">
@@ -26,8 +26,8 @@
 
           </div>
           <div class="flex wrap justify-between">
-            <q-btn text-color="dark" :class="$q.screen.lt.sm ? 'full-width q-mb-md' : ''" color="primary" @click="filterBuilds" label="Find"/>
-            <q-btn text-color="dark" :class="$q.screen.lt.sm ? 'full-width' : ''"color="primary" @click="resetFilters" label="Reset"/>
+            <q-btn text-color="dark" :class="$q.screen.lt.sm ? 'full-width q-mb-md' : ''" no-caps color="primary" @click="filterBuilds" label="Find"/>
+            <q-btn text-color="dark" :class="$q.screen.lt.sm ? 'full-width' : ''" no-caps color="primary" @click="resetFilters" label="Reset"/>
 
           </div>
 
