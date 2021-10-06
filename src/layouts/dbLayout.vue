@@ -154,7 +154,7 @@
               </q-list>
             </q-card>
           </div>
-          <router-view :key="$route.fullPath" />
+          <router-view  />
         </div>
       </div>
       <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[20, 90]">
