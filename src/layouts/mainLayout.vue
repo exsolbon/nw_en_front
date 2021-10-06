@@ -120,7 +120,8 @@
             <q-btn fab size="md" icon="keyboard_arrow_up" color="primary" />
           </q-page-scroller>
     </q-page-container>
-     <div v-else class="container">
+    <q-page-container v-else>
+       <div  class="container">
         <div class="flex items-center q-py-lg">
           <q-icon size="30px" class="q-mr-md" color="primary" name="help" />
           <h1 class="text-h5">New World Items Database</h1>
@@ -164,6 +165,8 @@
           <router-view  />
         </div>
       </div>
+    </q-page-container>
+
     <footer class="q-pb-lg">
       <q-separator spaced="lg"/>
       <div class="container ">
